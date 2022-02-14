@@ -1,4 +1,7 @@
 import CarBrands from "./CarBrands";
+import Services from "./Services";
+import ContactInformation from "./ContactInformation";
+import Summary from "./Summary";
 
 export default function ConfigDialogue() {
 
@@ -10,12 +13,15 @@ export default function ConfigDialogue() {
         </div>
 
         {/* Dialogue components*/}
-        {/* temporary wrapper div "dialogue-components" */}
-        <div className="dialogue-components">
 
-          <CarBrands/>
+        <CarBrands/>
 
-        </div>
+        <Services/>
+
+        <ContactInformation/>
+
+        <Summary/>
+
         {/* /Dialogue components*/}
 
         <div className="dialogue-controls">
