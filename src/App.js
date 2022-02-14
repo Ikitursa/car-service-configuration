@@ -1,3 +1,5 @@
+import ConfigDialogue from "./components/ConfigDialogue";
+
 function App() {
   return (
       <div className="App">
@@ -16,6 +18,16 @@ function App() {
         {/* CONTENT */}
 
         <div className="content-wrapper">
+
+
+
+          {/*####################################################################*/}
+          {/*####################################################################*/}
+
+            <ConfigDialogue/>
+
+          {/*####################################################################*/}
+          {/*####################################################################*/}
 
           {/* -----------------DIALOGUE----------------- */}
 
@@ -44,16 +56,13 @@ function App() {
                       <label htmlFor="peugeot">Peugeot</label>
                     </div>
                     <div className="input-wrapper">
-                      <input type="radio" id="volkswagen" name="brand" value="Volkswagen"/>
-                      <label htmlFor="volkswagen">Volkswagen</label>
+                      <label><input type="radio" name="brand" value="Volkswagen"/>Volkswagen</label>
                     </div>
                     <div className="input-wrapper">
                       <input type="radio" id="citroen" name="brand" value="Citroen"/>
                       <label htmlFor="citroen">Citroen</label>
                     </div>
-
                   </div>
-
 
                 </div>
               </div>
@@ -198,21 +207,20 @@ function App() {
 
               {/* PAGE 5 - AFTER SUBMIT */}
 
-                <div className="submit-message">
-                  <h3 className="dialogue-page-title">
-                    Vaša prijava je uspješno poslana
-                  </h3>
-                  <p>
-                    Vaša prijava je uspješno poslana i zaprimljena. Kontaktirati ćemo vas u najkraćem mogućem roku.
-                    Hvala vam.
-                  </p>
-                  <button className="button-rounded">Zatvori</button>
-                </div>
+              <div className="submit-message">
+                <h3 className="dialogue-page-title">
+                  Vaša prijava je uspješno poslana
+                </h3>
+                <p>
+                  Vaša prijava je uspješno poslana i zaprimljena. Kontaktirati ćemo vas u najkraćem mogućem roku.
+                  Hvala vam.
+                </p>
+                <button className="button-rounded">Zatvori</button>
+              </div>
 
-                <div className="dialogue-page-content">
+              <div className="dialogue-page-content">
 
-                </div>
-
+              </div>
 
 
             </div>
