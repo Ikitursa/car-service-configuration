@@ -1,3 +1,7 @@
+import {useContext} from "react";
+import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
+
+// For current purposes we are using services and coupons as a local set of data.
 const SERVICES = [
   {
     name: 'Zamjena ulja i filtera',
@@ -25,7 +29,32 @@ const SERVICES = [
   }
 ]
 
+const COUPONS = [{
+  code: 'Tokic123',
+  discount: 0.3
+}]
+
 export default function Services() {
+
+  const {services, setServices} = useContext(ConfiguratorContext)
+
+
+  const isActiveService = (currentService) => {
+    return !!(services.find(servicesItem => servicesItem.name === currentService.name))
+  }
+
+  const handleService = (service) => {
+    const listOfServices = [...services]
+
+    if (isActiveService(service)) {
+      const filteredServices = listOfServices.filter(servicesItem => servicesItem.name !== service.name)
+      setServices(filteredServices)
+    } else {
+      listOfServices.push(service)
+      setServices(listOfServices)
+    }
+  }
+
   return (
       <div className="dialogue-page">
         <h3 className="dialogue-page-title">
@@ -40,8 +69,14 @@ export default function Services() {
               SERVICES.map((service) => {
 
                 return (
-                    <div className="input-wrapper">
-                      <label><input type="checkbox" name="service"/>
+                    <div className="input-wrapper" key={service.name}>
+                      <label>
+                        <input
+                            type="checkbox"
+                            name="service"
+                            onChange={() => handleService(service)}
+                            checked={isActiveService(service)}
+                        />
                         {service.name} ({service.price}kn)</label>
                     </div>
                 )

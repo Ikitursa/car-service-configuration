@@ -1,6 +1,46 @@
-import ConfigDialogue from "./components/ConfigDialogue";
+import ConfigDialogue from "./components/ConfigDialogue"
+import {ConfiguratorContext} from "./contexts/ConfiguratorContext"
+import {useMemo, useState} from "react"
+
+import configuratorPages from "./enums/configuratorPages"
 
 function App() {
+
+  const [dialogueVisible, setDialogueVisible] = useState(false)
+
+  const [carBrand, setCarBrand] = useState('')
+  const [services, setServices] = useState([{
+    name: 'Balansiranje guma',
+    price: 50
+  },
+    {
+      name: 'Zamjena ulja u kočnicama',
+      price: 229
+    }])
+  const [coupon, setCoupon] = useState(null)
+
+  const [contactInfo, setContactInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    note: ''
+  })
+
+  const [configuratorActivePage, setConfiguratorActivePage] = useState(configuratorPages.carBrands)
+
+  const configuratorProviderValue = useMemo(() => ({
+    carBrand,
+    setCarBrand,
+    services,
+    setServices,
+    coupon,
+    setCoupon,
+    contactInfo,
+    setContactInfo,
+    configuratorActivePage,
+    setConfiguratorActivePage
+  }))
+
   return (
       <div className="App">
 
@@ -20,11 +60,12 @@ function App() {
         <div className="content-wrapper">
 
 
-
           {/*####################################################################*/}
           {/*####################################################################*/}
 
+          <ConfiguratorContext.Provider value={configuratorProviderValue}>
             <ConfigDialogue/>
+          </ConfiguratorContext.Provider>
 
           {/*####################################################################*/}
           {/*####################################################################*/}
