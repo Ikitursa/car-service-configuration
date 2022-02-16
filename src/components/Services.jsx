@@ -1,6 +1,6 @@
-import {useContext} from "react";
+import {useContext} from "react"
 import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
-import Price from "./services-price/Price";
+import Price from "./services-price/Price"
 
 // For current purposes we are using services and coupons as a local set of data.
 const SERVICES = [
@@ -32,8 +32,18 @@ const SERVICES = [
 
 export default function Services() {
 
-  const {services, setServices} = useContext(ConfiguratorContext)
+  const {services, setServices, configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
 
+  const formIsValid= !!services.length
+
+  const goToNextPage = () =>{
+    if(formIsValid){
+      setConfiguratorActivePage(configuratorActivePage+1)
+    }
+  }
+  const goToPreviousPage = () =>{
+    setConfiguratorActivePage(configuratorActivePage-1)
+  }
 
   const isActiveService = (currentService) => {
     return !!(services.find(servicesItem => servicesItem.name === currentService.name))
@@ -52,39 +62,48 @@ export default function Services() {
   }
 
   return (
-      <div className="dialogue-page">
-        <h3 className="dialogue-page-title">
-          Korak 2 Odaberite jednu ili više usluga
-        </h3>
+      <>
+        <div className="dialogue-page">
+          <h3 className="dialogue-page-title">
+            Korak 2 Odaberite jednu ili više usluga
+          </h3>
 
-        <div className="dialogue-page-content">
+          <div className="dialogue-page-content">
 
-          <div className="form-wrapper services">
+            <div className="form-wrapper services">
 
-            {
-              SERVICES.map((service) => {
+              {
+                SERVICES.map((service) => {
 
-                return (
-                    <div className="input-wrapper" key={service.name}>
-                      <label>
-                        <input
-                            type="checkbox"
-                            name="service"
-                            onChange={() => handleService(service)}
-                            checked={isActiveService(service)}
-                        />
-                        {service.name} ({service.price}kn)</label>
-                    </div>
-                )
-              })
-            }
+                  return (
+                      <div className="input-wrapper" key={service.name}>
+                        <label>
+                          <input
+                              type="checkbox"
+                              name="service"
+                              onChange={() => handleService(service)}
+                              checked={isActiveService(service)}
+                          />
+                          {service.name} ({service.price}kn)</label>
+                      </div>
+                  )
+                })
+              }
+
+            </div>
+
+            <Price/>
+
 
           </div>
+        </div>
 
-          <Price/>
+        <div className="dialogue-controls">
 
+          <button className="button-rounded" onClick={()=>goToPreviousPage()}>Nazad</button>
+          <button className="button-rounded" disabled={!formIsValid} onClick={()=>goToNextPage()}>Dalje</button>
 
         </div>
-      </div>
+      </>
   )
 }

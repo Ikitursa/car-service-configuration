@@ -1,15 +1,25 @@
-import {useContext} from "react";
+import {useContext} from "react"
 import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
 
 export default function ContactInformation() {
 
-  const {contactInfo, setContactInfo} = useContext(ConfiguratorContext)
+  const {contactInfo, setContactInfo, configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
 
+  const formIsValid= !!contactInfo.name && !!contactInfo.email && !!contactInfo.phone
 
-  function handleInput(event){
+  const goToNextPage = () =>{
+    if(formIsValid){
+      setConfiguratorActivePage(configuratorActivePage+1)
+    }
+  }
+  const goToPreviousPage = () =>{
+    setConfiguratorActivePage(configuratorActivePage-1)
+  }
+
+  function handleInput(event) {
     const value = event.target.value
     const name = event.target.getAttribute('data-input-name')
-    setContactInfo ( prevState =>{
+    setContactInfo(prevState => {
       return {
         ...prevState,
         [name]: value
@@ -17,51 +27,58 @@ export default function ContactInformation() {
     })
   }
 
-  return (
-      <div className="dialogue-page">
-        <h3 className="dialogue-page-title">
-          Korak 3 Vaši kontakt podaci
-        </h3>
+  return (<>
+        <div className="dialogue-page">
+          <h3 className="dialogue-page-title">
+            Korak 3 Vaši kontakt podaci
+          </h3>
 
-        <div className="dialogue-page-content">
+          <div className="dialogue-page-content">
 
-          <div className="form-wrapper contact-information">
+            <div className="form-wrapper contact-information">
 
-            <div className="input-wrapper">
-              <input type="text"
-                     value={contactInfo.name}
-                     onChange={handleInput}
-                     data-input-name="name"
-                     placeholder="Ime i prezime*"
-              />
-            </div>
-            <div className="input-wrapper">
-              <input type="text"
-                     value={contactInfo.email}
-                     onChange={handleInput}
-                     data-input-name="email"
-                     placeholder="Email adresa*"
-              />
-            </div>
-            <div className="input-wrapper">
-              <input type="text"
-                     value={contactInfo.phone}
-                     onChange={handleInput}
-                     data-input-name="phone"
-                     placeholder="Broj telefona*"
-              />
-            </div>
-            <div className="input-wrapper">
+              <div className="input-wrapper">
+                <input type="text"
+                       value={contactInfo.name}
+                       onChange={handleInput}
+                       data-input-name="name"
+                       placeholder="Ime i prezime*"
+                />
+              </div>
+              <div className="input-wrapper">
+                <input type="text"
+                       value={contactInfo.email}
+                       onChange={handleInput}
+                       data-input-name="email"
+                       placeholder="Email adresa*"
+                />
+              </div>
+              <div className="input-wrapper">
+                <input type="text"
+                       value={contactInfo.phone}
+                       onChange={handleInput}
+                       data-input-name="phone"
+                       placeholder="Broj telefona*"
+                />
+              </div>
+              <div className="input-wrapper">
                      <textarea value={contactInfo.note}
                                onChange={handleInput}
                                data-input-name="note"
                                placeholder="Napomena (opcionalno)"
                                rows="5"
                      />
+              </div>
             </div>
+
           </div>
+        </div>
+        <div className="dialogue-controls">
+
+          <button className="button-rounded" onClick={()=>goToPreviousPage()}>Nazad</button>
+          <button className="button-rounded" disabled={!formIsValid} onClick={()=>goToNextPage()}>Dalje</button>
 
         </div>
-      </div>
+      </>
   )
 }
