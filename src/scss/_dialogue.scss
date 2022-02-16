@@ -11,6 +11,21 @@ input[type=text], textarea {
   }
 }
 
+.backdrop {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.centered-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .config-dialogue {
   width: 100%;
@@ -29,7 +44,7 @@ input[type=text], textarea {
     position: relative;
 
     .dialogue-title {
-      text-align: center;
+      text-align: left;
     }
 
     .close {
@@ -200,11 +215,18 @@ input[type=text], textarea {
   }
 }
 
+@media screen and (min-width: $mobileS) {
+  .config-dialogue
+  .dialogue-header .dialogue-title {
+    text-align: center;
+  }
+}
 
-@media screen and (min-width: 480px) {
+
+@media screen and (min-width: $mobileL) {
 
   .config-dialogue {
-    width: 384px;
+    width: 85%;
     padding: 20px;
     border-radius: 12px;
     margin: 28px auto;
@@ -229,9 +251,9 @@ input[type=text], textarea {
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
   .config-dialogue {
-    width: 600px;
+    width: 700px;
     padding: 24px;
     margin: 32px auto;
 
@@ -263,7 +285,7 @@ input[type=text], textarea {
 
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $laptop) {
   .config-dialogue {
     width: 800px;
 

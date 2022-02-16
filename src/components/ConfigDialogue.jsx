@@ -5,16 +5,19 @@ export default function ConfigDialogue({close}) {
 
 
   return (
-      <div className="config-dialogue">
-        <ConfiguratorProvider>
-          <div className="dialogue-header">
-            <h2 className="dialogue-title">Konfigurator servisa</h2>
-            <button className="button-rounded button-secondary close" onClick={() => close()}>X</button>
-          </div>
+      <div className="backdrop">
+        <div className="config-dialogue centered-popup">
+          <ConfiguratorProvider>
+            <div className="dialogue-header">
+              <h2 className="dialogue-title">Konfigurator servisa</h2>
+              <button className="button-rounded button-secondary close" onClick={() => close()}>X</button>
+            </div>
 
-          <ConfiguratorPageSwitcher/>
+            <ConfiguratorPageSwitcher/>
 
-        </ConfiguratorProvider>
+          </ConfiguratorProvider>
+        </div>
       </div>
+
   )
 }
