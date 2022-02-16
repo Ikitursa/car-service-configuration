@@ -1,6 +1,5 @@
-import {createContext, useMemo, useState} from "react"
-import configuratorPages from "../enums/configuratorPages"
-
+import {createContext, useMemo, useState} from 'react'
+import configuratorPages from '../enums/configuratorPages'
 const ConfiguratorContext = createContext(null)
 
 function ConfiguratorProvider({children}) {

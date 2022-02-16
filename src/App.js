@@ -1,13 +1,10 @@
-import ConfigDialogue from "./components/ConfigDialogue"
-import {useState} from "react"
+import {useState} from 'react'
+import {ModalVisibleContext} from './contexts/ModalVisibleContext'
+import ConfiguratorDialogue from './components/configurator/ConfiguratorDialogue'
 
 function App() {
 
-  const [dialogueVisible, setDialogueVisible] = useState(false)
-
-  const closeDialogue = () => {
-    setDialogueVisible(false)
-  }
+  const [isDialogueVisible, setIsDialogueVisible] = useState(false)
 
   return (
       <div className="App">
@@ -23,19 +20,17 @@ function App() {
         </header>
 
         <div className="content-wrapper">
-
-          {dialogueVisible
-              ? <ConfigDialogue close={closeDialogue}/>
+          {isDialogueVisible
+              ? <ModalVisibleContext.Provider value={{setIsDialogueVisible}}>
+                <ConfiguratorDialogue/>
+              </ModalVisibleContext.Provider>
               : <div className="start-config">
                 <p>pritisnite gumb niže kako biste pokrenuli konfigurator</p>
-                <button className="button-rounded" onClick={() => setDialogueVisible(true)}>Pokreni konfigurator
+                <button className="button-rounded" onClick={() => setIsDialogueVisible(true)}>Pokreni konfigurator
                 </button>
               </div>
           }
-
-
         </div>
-
       </div>
   )
 }

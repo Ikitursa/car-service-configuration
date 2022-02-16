@@ -1,6 +1,6 @@
-import {useContext} from "react"
-import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
-import Price from "./services-price/Price"
+import {useContext} from 'react'
+import {ConfiguratorContext} from '../../../contexts/ConfiguratorContext'
+import Price from './services/Price'
 
 // For current purposes we are using services and coupons as a local set of data.
 const SERVICES = [
@@ -45,14 +45,14 @@ export default function Services() {
     setConfiguratorActivePage(configuratorActivePage - 1)
   }
 
-  const isActiveService = (currentService) => {
+  const isServiceChecked = (currentService) => {
     return !!(services.find(servicesItem => servicesItem.name === currentService.name))
   }
 
   const handleService = (service) => {
     const listOfServices = [...services]
 
-    if (isActiveService(service)) {
+    if (isServiceChecked(service)) {
       const filteredServices = listOfServices.filter(servicesItem => servicesItem.name !== service.name)
       setServices(filteredServices)
     } else {
@@ -74,7 +74,6 @@ export default function Services() {
 
               {
                 SERVICES.map((service) => {
-
                   return (
                       <div className="input-wrapper" key={service.name}>
                         <label>
@@ -82,7 +81,7 @@ export default function Services() {
                               type="checkbox"
                               name="service"
                               onChange={() => handleService(service)}
-                              checked={isActiveService(service)}
+                              checked={isServiceChecked(service)}
                           />
                           {service.name} ({service.price}kn)</label>
                       </div>
@@ -94,14 +93,13 @@ export default function Services() {
 
             <Price/>
 
-
           </div>
         </div>
 
         <div className="dialogue-controls">
 
-          <button className="button-rounded" onClick={() => goToPreviousPage()}>Nazad</button>
-          <button className="button-rounded" disabled={!formIsValid} onClick={() => goToNextPage()}>Dalje</button>
+          <button className="button-rounded" onClick={goToPreviousPage}>Nazad</button>
+          <button className="button-rounded" disabled={!formIsValid} onClick={goToNextPage}>Dalje</button>
 
         </div>
       </>

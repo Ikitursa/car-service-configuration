@@ -1,11 +1,16 @@
-import {useContext} from "react"
-import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
+import {useContext} from 'react'
+import {ConfiguratorContext} from '../../../contexts/ConfiguratorContext'
 
 export default function ContactInformation() {
 
   const {contactInfo, setContactInfo, configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
 
-  const formIsValid= !!contactInfo.name && !!contactInfo.email && !!contactInfo.phone
+  const isEmailValid = () => {
+    const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return contactInfo.email.match(regexp)
+  }
+
+  const formIsValid= !!contactInfo.name && !!contactInfo.phone && isEmailValid()
 
   const goToNextPage = () =>{
     if(formIsValid){
@@ -43,22 +48,25 @@ export default function ContactInformation() {
                        onChange={handleInput}
                        data-input-name="name"
                        placeholder="Ime i prezime*"
+                       required
                 />
               </div>
               <div className="input-wrapper">
-                <input type="text"
+                <input type="email"
                        value={contactInfo.email}
                        onChange={handleInput}
                        data-input-name="email"
                        placeholder="Email adresa*"
+                       required
                 />
               </div>
               <div className="input-wrapper">
-                <input type="text"
+                <input type="tel"
                        value={contactInfo.phone}
                        onChange={handleInput}
                        data-input-name="phone"
                        placeholder="Broj telefona*"
+                       required
                 />
               </div>
               <div className="input-wrapper">
@@ -75,8 +83,8 @@ export default function ContactInformation() {
         </div>
         <div className="dialogue-controls">
 
-          <button className="button-rounded" onClick={()=>goToPreviousPage()}>Nazad</button>
-          <button className="button-rounded" disabled={!formIsValid} onClick={()=>goToNextPage()}>Dalje</button>
+          <button className="button-rounded" onClick={goToPreviousPage}>Nazad</button>
+          <button className="button-rounded" disabled={!formIsValid} onClick={goToNextPage}>Dalje</button>
 
         </div>
       </>

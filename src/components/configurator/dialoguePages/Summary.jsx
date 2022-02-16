@@ -1,13 +1,12 @@
-import {useContext} from "react"
-import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
-import ServicesSummary from "./summary/ServicesSummary"
-import CarBrandSummary from "./summary/CarBrandSummary"
-import ContactInformationSummary from "./summary/ContactInformationSummary"
+import {useContext} from 'react'
+import {ConfiguratorContext} from '../../../contexts/ConfiguratorContext'
+import ServicesSummary from './summary/ServicesSummary'
+import CarBrandSummary from './summary/CarBrandSummary'
+import ContactInformationSummary from './summary/ContactInformationSummary'
 
 export default function Summary() {
 
   const {configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
-
 
   const goToPreviousPage = () => {
     setConfiguratorActivePage(configuratorActivePage - 1)
@@ -43,8 +42,8 @@ export default function Summary() {
         </div>
 
         <div className="dialogue-controls">
-          <button className="button-rounded" onClick={() => goToPreviousPage()}>Nazad</button>
-          <button className="button-rounded button-secondary" onClick={() => submitForm()}>Pošalji</button>
+          <button className="button-rounded" onClick={goToPreviousPage}>Nazad</button>
+          <button className="button-rounded button-secondary" onClick={submitForm}>Pošalji</button>
         </div>
       </>
   )

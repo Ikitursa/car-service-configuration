@@ -1,11 +1,11 @@
-import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
-import {useContext} from "react"
-import configuratorPages from "../enums/configuratorPages";
-import CarBrands from "./CarBrands"
-import Services from "./Services"
-import ContactInformation from "./ContactInformation"
-import Summary from "./Summary"
-import ConfigurationSent from "./ConfigurationSent"
+import {useContext} from 'react'
+import {ConfiguratorContext} from '../../contexts/ConfiguratorContext'
+import configuratorPages from '../../enums/configuratorPages'
+import CarBrands from './dialoguePages/CarBrands'
+import Services from './dialoguePages/Services'
+import ContactInformation from './dialoguePages/ContactInformation'
+import Summary from './dialoguePages/Summary'
+import ConfigurationSent from './dialoguePages/ConfigurationSent'
 
 export default function ConfiguratorPageSwitcher() {
   const {configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)

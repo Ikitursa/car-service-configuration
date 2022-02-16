@@ -1,6 +1,6 @@
-import {useContext, useRef, useState} from "react"
-import {ConfiguratorContext} from "../../contexts/ConfiguratorContext"
-import {calculatePrice} from "../../helpers/calculateServicesPrice"
+import {useContext, useRef, useState} from 'react'
+import {ConfiguratorContext} from '../../../../contexts/ConfiguratorContext'
+import {calculatePrice} from '../../../../helpers/calculateServicesPrice'
 
 const COUPONS = [
   {
