@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700');
+
+body {
+  background-color: $lightBlue;
+  font-family: 'Roboto', sans-serif;
+  color: $gray;
+  line-height: 1.5;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 500
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500
+}
+
+strong {
+  font-weight: 700;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+
+  &:disabled {
+    opacity: 0.5
+  }
+}
+
+
+.content-wrapper {
+  width: 100%
+}
+
+.button-rounded {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+
+  background-color: $blue;
+  color: white;
+
+  &.outline {
+    background-color: transparent;
+    color: $blue;
+    border-color: $blue;
+  }
+
+  &.button-secondary {
+    background-color: $orange;
+
+    &.outline {
+      color: $orange;
+      background-color: transparent;
+      border-color: $orange;
+    }
+  }
+
+
+}
+
+
+header {
+  background-color: $blue;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 30%);
+
+  .header-wrapper {
+
+    margin: auto;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      margin-right: 32px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .header-text {
+      font-size: 14px;
+    }
+
+    padding: 12px;
+  }
+}
+
+
+.start-config {
+  margin: 32px auto;
+  width: fit-content;
+  text-align: center;
+
+  .button-rounded {
+    margin: 16px auto
+  }
+}
+
+
+@media screen and (min-width: $mobileL) {
+
+  h2 {
+    font-size: 24px;
+  }
+
+  header {
+    .header-wrapper {
+
+      .logo {
+        margin-right: 32px;
+        font-size: 40px;
+      }
+
+      .header-text {
+        font-size: 14px;
+      }
+      padding: 16px;
+    }
+  }
+
+  .content-wrapper {
+    width: 420px;
+    margin: auto;
+  }
+
+}
+
+@media screen and (min-width: $tablet) {
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .content-wrapper {
+    width: 640px;
+  }
+
+}
+
+@media screen and (min-width: $laptop) {
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .content-wrapper {
+    width: 960px;
+  }
+
+
+}
+
+
