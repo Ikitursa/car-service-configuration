@@ -20,11 +20,26 @@ input[type=text], textarea {
   top: 0;
 }
 
+.centered-popup::-webkit-scrollbar {
+  width: 16px;
+}
+
+.centered-popup::-webkit-scrollbar-track {
+  background: $lightGray;
+}
+.centered-popup::-webkit-scrollbar-thumb {
+  background-color: $gray ;
+  border: 3px solid $lightGray;
+}
+
 .centered-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-height: 80vh;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .config-dialogue {
@@ -223,7 +238,15 @@ input[type=text], textarea {
 }
 
 
+
 @media screen and (min-width: $mobileL) {
+
+  .centered-popup::-webkit-scrollbar-track {
+    border-radius: 0 12px 12px 0;
+  }
+  .centered-popup::-webkit-scrollbar-thumb {
+    border-radius: 6px 12px 12px 6px;
+  }
 
   .config-dialogue {
     width: 85%;
