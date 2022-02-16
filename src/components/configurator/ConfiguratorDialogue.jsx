@@ -1,23 +1,19 @@
-import {ConfiguratorProvider} from "../contexts/ConfiguratorContext"
-import ConfiguratorPageSwitcher from "./ConfiguratorPageSwitcher"
+import {ConfiguratorProvider} from '../../contexts/ConfiguratorContext'
+import ConfiguratorPageSwitcher from './ConfiguratorPageSwitcher'
+import DialogueCloseButton from './DialogueCloseButton'
 
-export default function ConfigDialogue({close}) {
-
-
+export default function ConfiguratorDialogue() {
   return (
       <div className="backdrop">
         <div className="config-dialogue centered-popup">
           <ConfiguratorProvider>
             <div className="dialogue-header">
               <h2 className="dialogue-title">Konfigurator servisa</h2>
-              <button className="button-rounded button-secondary close" onClick={() => close()}>X</button>
+              <DialogueCloseButton />
             </div>
-
             <ConfiguratorPageSwitcher/>
-
           </ConfiguratorProvider>
         </div>
       </div>
-
   )
 }

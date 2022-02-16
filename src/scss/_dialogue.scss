@@ -1,4 +1,4 @@
-input[type=text], textarea {
+input, textarea {
   padding: 6px 12px;
   border-radius: 6px;
   border: 2px solid $lightGray;
@@ -310,7 +310,7 @@ input[type=text], textarea {
 
 @media screen and (min-width: $laptop) {
   .config-dialogue {
-    width: 800px;
+    width: 920px;
 
     .form-wrapper.car-brands {
       grid-template-columns: repeat(6, 1fr);
