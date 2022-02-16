@@ -126,18 +126,6 @@ input, textarea {
 
   .coupon-wrapper {
 
-    .coupon-message {
-      font-size: 14px;
-
-      &.success {
-        color: $green;
-      }
-
-      &.failure {
-        color: $darkRed;
-      }
-    }
-
     .input-wrapper.coupon {
       display: flex;
       justify-content: flex-end;
@@ -152,6 +140,18 @@ input, textarea {
         border-radius: 0 6px 6px 0;
         border: 2px solid $blue;
       }
+    }
+  }
+
+  .coupon-message {
+    font-size: 14px;
+
+    &.success {
+      color: $green;
+    }
+
+    &.failure {
+      color: $darkRed;
     }
   }
 
