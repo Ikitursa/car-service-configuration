@@ -3,22 +3,27 @@ import {ConfiguratorContext} from '../../../contexts/ConfiguratorContext'
 
 export default function ContactInformation() {
 
-  const {contactInfo, setContactInfo, configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
+  const {
+    contactInfo,
+    setContactInfo,
+    configuratorActivePage,
+    setConfiguratorActivePage
+  } = useContext(ConfiguratorContext)
 
   const isEmailValid = () => {
     const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return contactInfo.email.match(regexp)
   }
 
-  const formIsValid= !!contactInfo.name && !!contactInfo.phone && isEmailValid()
+  const formIsValid = !!contactInfo.name && !!contactInfo.phone && isEmailValid()
 
-  const goToNextPage = () =>{
-    if(formIsValid){
-      setConfiguratorActivePage(configuratorActivePage+1)
+  const goToNextPage = () => {
+    if (formIsValid) {
+      setConfiguratorActivePage(configuratorActivePage + 1)
     }
   }
-  const goToPreviousPage = () =>{
-    setConfiguratorActivePage(configuratorActivePage-1)
+  const goToPreviousPage = () => {
+    setConfiguratorActivePage(configuratorActivePage - 1)
   }
 
   function handleInput(event) {
@@ -27,7 +32,7 @@ export default function ContactInformation() {
     setContactInfo(prevState => {
       return {
         ...prevState,
-        [name]: value
+        [name]: (event.type === 'blur') ? value.trim() : value
       }
     })
   }
@@ -46,6 +51,7 @@ export default function ContactInformation() {
                 <input type="text"
                        value={contactInfo.name}
                        onChange={handleInput}
+                       onBlur={handleInput}
                        data-input-name="name"
                        placeholder="Ime i prezime*"
                        required
@@ -55,6 +61,7 @@ export default function ContactInformation() {
                 <input type="email"
                        value={contactInfo.email}
                        onChange={handleInput}
+                       onBlur={handleInput}
                        data-input-name="email"
                        placeholder="Email adresa*"
                        required
@@ -64,6 +71,7 @@ export default function ContactInformation() {
                 <input type="tel"
                        value={contactInfo.phone}
                        onChange={handleInput}
+                       onBlur={handleInput}
                        data-input-name="phone"
                        placeholder="Broj telefona*"
                        required
@@ -72,6 +80,7 @@ export default function ContactInformation() {
               <div className="input-wrapper">
                      <textarea value={contactInfo.note}
                                onChange={handleInput}
+                               onBlur={handleInput}
                                data-input-name="note"
                                placeholder="Napomena (opcionalno)"
                                rows="5"
