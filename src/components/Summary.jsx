@@ -1,17 +1,19 @@
-import {useContext} from "react";
-import {ConfiguratorContext} from "../contexts/ConfiguratorContext";
+import {useContext} from "react"
+import {ConfiguratorContext} from "../contexts/ConfiguratorContext"
+import ServicesSummary from "./summary/ServicesSummary"
+import CarBrandSummary from "./summary/CarBrandSummary"
+import ContactInformationSummary from "./summary/ContactInformationSummary"
 
 export default function Summary() {
 
   const {configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
 
 
-
-  const goToPreviousPage = () =>{
-    setConfiguratorActivePage(configuratorActivePage-1)
+  const goToPreviousPage = () => {
+    setConfiguratorActivePage(configuratorActivePage - 1)
   }
-  const submitForm = () =>{
-    setConfiguratorActivePage(configuratorActivePage+1)
+  const submitForm = () => {
+    setConfiguratorActivePage(configuratorActivePage + 1)
   }
   return (
       <>
@@ -29,46 +31,11 @@ export default function Summary() {
 
             <div className="summary-wrapper">
 
-              <div className="summary-item">
-                <div className="item-header">
-                  <h2 className="item-title">MODEL VOZILA</h2>
-                  <button className="button-rounded outline">Uredi</button>
-                </div>
-                <div className="item-content">
-                  <p>Volkswagen</p>
-                </div>
-              </div>
+              <CarBrandSummary/>
 
-              <div className="summary-item">
-                <div className="item-header">
-                  <h2 className="item-title">ODABRANE USLUGE</h2>
-                  <button className="button-rounded outline">Uredi</button>
-                </div>
-                <div className="item-content">
-                  <div className="item-row"><p>Zamjena ulja i filtera</p><p>500 KN</p></div>
-                  <div className="item-row"><p>Promjena pakni</p><p>450 KN</p></div>
-                  <p>Popust(30%): -285,00 KN</p>
-                  <p>UKUPNO: <strong>665,00 KN</strong></p>
-                </div>
-              </div>
+              <ServicesSummary/>
 
-              <div className="summary-item contact">
-                <div className="item-header">
-                  <h2 className="item-title">KONTAKT PODACI</h2>
-                  <button className="button-rounded outline">Uredi</button>
-                </div>
-                <div className="item-content">
-                  <div className="item-column">
-                    <div className="item-row"><p>Ime i prezime:</p><p>Kristijan Drača</p></div>
-                    <div className="item-row"><p>Broj telefona:</p><p>2456742572</p></div>
-                  </div>
-                  <div className="item-column">
-                    <div className="item-row"><p>Email adresa:</p><p>kristijan@borealis.biz</p></div>
-                    <div className="item-row"><p>Napomena:</p><p>Kod auta se prilikom prelaska preko rupa često
-                      čuje lupanje pa bi i to trebalo pogledati</p></div>
-                  </div>
-                </div>
-              </div>
+              <ContactInformationSummary/>
 
             </div>
 
@@ -76,8 +43,8 @@ export default function Summary() {
         </div>
 
         <div className="dialogue-controls">
-          <button className="button-rounded" onClick={()=>goToPreviousPage()}>Nazad</button>
-          <button className="button-rounded button-secondary" onClick={()=>submitForm()}>Pošalji</button>
+          <button className="button-rounded" onClick={() => goToPreviousPage()}>Nazad</button>
+          <button className="button-rounded button-secondary" onClick={() => submitForm()}>Pošalji</button>
         </div>
       </>
   )

@@ -34,15 +34,15 @@ export default function Services() {
 
   const {services, setServices, configuratorActivePage, setConfiguratorActivePage} = useContext(ConfiguratorContext)
 
-  const formIsValid= !!services.length
+  const formIsValid = !!services.length
 
-  const goToNextPage = () =>{
-    if(formIsValid){
-      setConfiguratorActivePage(configuratorActivePage+1)
+  const goToNextPage = () => {
+    if (formIsValid) {
+      setConfiguratorActivePage(configuratorActivePage + 1)
     }
   }
-  const goToPreviousPage = () =>{
-    setConfiguratorActivePage(configuratorActivePage-1)
+  const goToPreviousPage = () => {
+    setConfiguratorActivePage(configuratorActivePage - 1)
   }
 
   const isActiveService = (currentService) => {
@@ -100,8 +100,8 @@ export default function Services() {
 
         <div className="dialogue-controls">
 
-          <button className="button-rounded" onClick={()=>goToPreviousPage()}>Nazad</button>
-          <button className="button-rounded" disabled={!formIsValid} onClick={()=>goToNextPage()}>Dalje</button>
+          <button className="button-rounded" onClick={() => goToPreviousPage()}>Nazad</button>
+          <button className="button-rounded" disabled={!formIsValid} onClick={() => goToNextPage()}>Dalje</button>
 
         </div>
       </>
