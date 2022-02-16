@@ -1,17 +1,17 @@
-import {useContext, useRef} from "react"
+import {useContext, useRef, useState} from "react"
 import {ConfiguratorContext} from "../../contexts/ConfiguratorContext"
-import {useState} from "react"
 import {calculatePrice} from "../../helpers/calculateServicesPrice"
 
-const COUPONS = [{
-  code: 'Tokic123',
-  discount: 0.3
-},
+const COUPONS = [
   {
-    code: 'Tokic70',
+    code: 'Tokić123',
+    discount: 0.3
+  },
+  {
+    code: 'Tokić70',
     discount: 0.7
-  }]
-
+  }
+]
 
 export default function Price() {
 
@@ -22,12 +22,10 @@ export default function Price() {
 
   const couponRef = useRef(null)
 
-
   const validateCoupon = (e) => {
     e.preventDefault()
     const couponCode = couponRef.current.value
     const validCoupon = COUPONS.find(couponListItem => couponListItem.code === couponCode)
-
     if (validCoupon) {
       setCoupon(validCoupon)
     } else {
